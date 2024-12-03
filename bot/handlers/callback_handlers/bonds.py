@@ -51,7 +51,6 @@ async def subscribtion(callback_query: CallbackQuery, state: FSMContext):
     bond_name = callback_query.data.split('_')[0]
 
     if bond_name not in subscriptions:
-        subscriptions = []
         subscriptions.append(bond_name)
         await callback_query.answer(f'You have subscribed to {bond_name.upper()}!')
     else:
