@@ -36,11 +36,11 @@ class Menu:
         subscriptions = data.get("subscriptions", [])
 
         buttons = {
-            '💙 Gazprom': 'gazp_bond',
-            '💛 T-Group': 'tinkoff_bond',
+            '💛 Tinkoff': 'tcsg_bond',
             '💚 Sberbank': 'sber_bond',
-            '🐝 Beeline': 'beeline_bond',
-            '🛢 Rosneft': 'rosneft_bond'
+            '📡 VEON-RX': 'veon-rx_bond',
+            '💙 Gazprom': 'gazp_bond',
+            '🛢 Rosneft': 'rosn_bond'
         }
         
         updated_buttons = {}
