@@ -1,3 +1,7 @@
 *.pyc
 bot/settings.py
 *.DS_Store
+/ai/data
+/ai/plots
+*.csv
+*.png
