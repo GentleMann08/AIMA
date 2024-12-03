@@ -1,0 +1,4 @@
+beautifulsoup4==4.12.3
+aiogram==3.14.0
+urllib3==2.2.3
+selenium==4.27.1
