@@ -31,26 +31,37 @@ class Menu:
         return keyboard
     
     @staticmethod
-    async def to_bonds():
+    async def to_bonds(state: FSMContext):
+        data = await state.get_data()
+        subscriptions = data.get("subscriptions", [])
+
         buttons = {
-            'Gazprom 💙': 'gazp_bond',
-            'T-Group 💛': 'tinkoff_bond',
-            'Sberbank 💚': 'sber_bond',
-            'Beeline 🐝': 'beeline_bond',
-            'Rosneft 🛢': 'rosneft_bond'
+            '💙 Gazprom': 'gazp_bond',
+            '💛 T-Group': 'tinkoff_bond',
+            '💚 Sberbank': 'sber_bond',
+            '🐝 Beeline': 'beeline_bond',
+            '🛢 Rosneft': 'rosneft_bond'
         }
-
-        buttons_dict = buttons | {"⬅️ Menu": "to_start"}
-
-        keyboard = await KeyboardOperations.create_base_keyboard(buttons=buttons_dict)
+        
+        updated_buttons = {}
+        for button_text, button_value in buttons.items():
+            base_name = button_value.replace('_bond', '')
+            
+            if base_name in subscriptions:
+                updated_buttons[button_text + ' ✅'] = button_value
+            else:
+                updated_buttons[button_text + ' ❌'] = button_value
+        
+        updated_buttons["⬅️ Menu"] = "to_start"
+        
+        keyboard = await KeyboardOperations.create_base_keyboard(buttons=updated_buttons)
+        
         return keyboard
     
     @staticmethod
     async def subscribe(bond_name, state: FSMContext):
         data = await state.get_data()
         subscriptions = data.get("subscriptions", [])
-        if subscriptions is None:
-            subscriptions = []
 
         if bond_name not in subscriptions:
             buttons = {f'Not subscribed ❌': f'{bond_name}_subscribe/unsubscribe'}

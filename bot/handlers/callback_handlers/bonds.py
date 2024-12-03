@@ -13,7 +13,7 @@ async def all_bonds(callback_query: CallbackQuery, state: FSMContext):
     if last_message_id:
         await callback_query.message.chat.delete_message(message_id=last_message_id)
 
-    keyboard = await Menu.to_bonds()
+    keyboard = await Menu.to_bonds(state)
     await callback_query.answer('Choose a bond to subscribe to')
     new_message = await callback_query.message.answer(
         text="Bonds (not all are currently supported):",
