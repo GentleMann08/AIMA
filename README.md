@@ -4,5 +4,4 @@
 ### Используйте `pip install -r requirements.txt` для установки библиотек, необходимых для работы проекта
 
 ## Пример работы
-<img width="925" alt="image" src="https://github.com/user-attachments/assets/d1f6fbc6-f33b-4126-8e08-2377dd152441">
-
+<img width="917" alt="image" src="https://github.com/user-attachments/assets/4dc201dc-12b9-4590-a842-aa5a284e5533">
